@@ -17,10 +17,10 @@ export default function App() {
 
   if (!fontLoaded) {
     return (
-      <AppLoading 
+      <AppLoading
         startAsync={fetchFonts}
         onFinish={setFontLoaded(true)}
-        onError={(error) => console.log(error)} 
+        onError={(error) => console.log(error)}
       />
     );
   }
