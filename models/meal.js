@@ -1,17 +1,17 @@
 class Meal {
     constructor(
-        id, 
-        categoryIds, 
-        title, 
-        imageUrl, 
-        ingredients, 
+        id,
+        categoryIds,
+        title,
+        affordability,
+        complexity,
+        imageUrl,
+        duration,
+        ingredients,
         steps,
-        duration,  
-        complexity, 
-        affordability, 
-        isGlutenFree, 
-        isVegan, 
-        isVegetarian, 
+        isGlutenFree,
+        isVegan,
+        isVegetarian,
         isLactoseFree
     ) {
         this.id = id;
