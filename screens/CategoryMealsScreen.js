@@ -7,13 +7,18 @@ import MealItem from '../components/MealItem';
 const CategoryMealsScreen = props => {
     const renderMealItem = itemData => {
         return (
-            <MealItem 
-                title={itemData.item.title} 
+            <MealItem
+                title={itemData.item.title}
                 image={itemData.item.imageUrl}
-                onSelectMeal={() => { }} 
-                duration={itemData.item.duration} 
-                complexity={itemData.item.complexity} 
-                affordability={itemData.item.affordability} 
+                duration={itemData.item.duration}
+                complexity={itemData.item.complexity}
+                affordability={itemData.item.affordability}
+                onSelectMeal={() => {
+                    props.navigation.navigate({
+                        routeName: 'MealDetail',
+                        params: { mealId: itemData.item.id }
+                    })
+                }}
             />
         )
     }
@@ -36,9 +41,8 @@ const CategoryMealsScreen = props => {
     );
 }
 
-CategoryMealsScreen.navigationOptions = (navigationData) => {
+CategoryMealsScreen.navigationOptions = navigationData => {
     const catId = navigationData.navigation.getParam('categoryId');
-
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
 
     return {

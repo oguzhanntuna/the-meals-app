@@ -5,16 +5,15 @@ import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 const CategoriesScreen = props => {
-    const renderGridItem = (itemData) => {
+    const renderGridItem = itemData => {
         return (
             <CategoryGridTile
                 title={itemData.item.title}
                 color={itemData.item.color}
                 onSelect={() => {
                     props.navigation.navigate({
-                        routeName: 'CategoryMeals', params: {
-                            categoryId: itemData.item.id
-                        }
+                        routeName: 'CategoryMeals',
+                        params: { categoryId: itemData.item.id }
                     });
                 }}
             />
@@ -23,7 +22,7 @@ const CategoriesScreen = props => {
 
     return (
         <FlatList
-        style={{ backgroundColor: 'white' }}
+            style={{ backgroundColor: 'white' }}
             keyExtractor={(item, index) => item.id}
             data={CATEGORIES}
             renderItem={renderGridItem}

@@ -15,7 +15,9 @@ const MealsNavigator = createStackNavigator({
     CategoryMeals: {
         screen: CategoryMealsScreen
     },
-    MealDetail: MealDetailScreen
+    MealDetail: {
+        screen: MealDetailScreen
+    }
 }, {
     // initialRouteName: 'Categories',
     // mode: 'modal',
