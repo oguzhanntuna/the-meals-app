@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Text, Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createAppContainer } from 'react-navigation';
@@ -18,8 +18,13 @@ const defaultStackNavOptions = {
     headerStyle: {
         backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
     },
-    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
-    headerTitle: 'Screen'
+    headerTitleStyle: {
+        fontFamily: 'open-sans-bold'
+    },
+    headerBackTitleStyle: {
+        fontFamily: 'open-sans'
+    },
+    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor
 }
 
 const MealsNavigator = createStackNavigator({
@@ -56,7 +61,10 @@ const tabScreenConfig = {
                     />
                 );
             },
-            tabBarColor: Colors.primaryColor
+            tabBarColor: Colors.primaryColor,
+            tabBarLabel: Platform.OS === 'android'
+                ? <Text style={{ fontFamily: 'open-sans-bold' }}>Meals</Text>
+                : 'Meals'
         }
     },
     Favorites: {
@@ -72,7 +80,10 @@ const tabScreenConfig = {
                     />
                 );
             },
-            tabBarColor: Colors.accentColor
+            tabBarColor: Colors.accentColor,
+            tabBarLabel: Platform.OS === 'android'
+                ? <Text style={{ fontFamily: 'open-sans-bold' }}>Favorites</Text>
+                : 'Favorites'
         }
     }
 }
@@ -82,12 +93,12 @@ const MealsFavTabNavigator =
         ? createMaterialBottomTabNavigator(tabScreenConfig, {
             activeColor: 'white',
             shifting: true,
-            // barStyle: {
-            //     backgroundColor: Colors.primaryColor
-            // }
         })
         : createBottomTabNavigator(tabScreenConfig, {
             tabBarOptions: {
+                labelStyle: {
+                    fontFamily: 'open-sans-bold'
+                },
                 activeTintColor: Colors.accentColor
             }
         });
@@ -108,7 +119,7 @@ const MainNavigator = createDrawerNavigator({
     Filters: FiltersNavigator
 }, {
     contentOptions: {
-        activeTintColor: Colors.accentColor, 
+        activeTintColor: Colors.accentColor,
         labelStyle: {
             fontFamily: 'open-sans-bold'
         }
